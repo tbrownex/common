@@ -4,7 +4,7 @@ import logging
 
 __author__ = "Tom Browne"
 
-def getData(config):
+def getData(config, sep=","):
     ''' Read the input file into a dataframe'''
-    df = pd.read_csv(config["dataLoc"]+config["fileName"])
+    df = pd.read_csv(config["dataLoc"]+config["fileName"], sep=sep)
     return df
