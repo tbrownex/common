@@ -12,7 +12,7 @@ def analyzeCols(df):
         if tmp.shape[0] == 1:
             remove.append(col)
     if len(remove) > 0:
-        print("\n - Removing columns:")
+        print("\nRemoving columns:")
         for col in remove:
             print(" -", col)
     else:

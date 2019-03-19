@@ -1,7 +1,7 @@
 import numpy as np
 
 def splitLabel(data, config):
-    '''Inputs is a dictionary of dataframes
+    ''' Input is a dictionary of dataframes
     Separate the Label from the data and put into distinct data dictionary keys.
     If the label is categorical (not conitnuous) then one-hot it
     '''
