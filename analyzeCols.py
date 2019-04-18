@@ -11,10 +11,4 @@ def analyzeCols(df):
         tmp = df[col].unique()
         if tmp.shape[0] == 1:
             remove.append(col)
-    if len(remove) > 0:
-        print("\nRemoving columns:")
-        for col in remove:
-            print(" -", col)
-    else:
-        print("\n - No columns to remove")
     return remove
