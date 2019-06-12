@@ -3,7 +3,7 @@ import pandas as pd
 def setPandasOptions():
     options = {
         'display': {
-            'max_columns': 5,
+            'max_columns': 8,
             'max_colwidth': 15,
             'expand_frame_repr': False,  # Don't wrap to multiple pages
             'max_rows': 10,

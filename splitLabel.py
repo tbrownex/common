@@ -10,32 +10,32 @@ def splitLabel(df, config):
     # Create the Feature sets first
     d["trainX"] = df["train"].copy()
     del d["trainX"][config["labelColumn"]]
-    if df["val"] is not None:
+    if "val" in df.keys():
         d["valX"] = df["val"].copy()
         del d["valX"][config["labelColumn"]]
-    if df["test"] is not None:
+    if "test" in df.keys():
         d["testX"] = df["test"].copy()
         del d["testX"][config["labelColumn"]]
     
     # Now the Labels
     trainY = df["train"][config["labelColumn"]]
-    if df["val"] is not None:
+    if "val" in df.keys():
         valY  = df["val"][config["labelColumn"]]
-    if df["test"] is not None:
+    if "test" in df.keys():
         testY  = df["test"][config["labelColumn"]]
     
     if config["labelType"] == "continuous":
         d["trainY"] = trainY
-        if df["val"] is not None:
+        if "val" in df.keys():
             d["valY"]  = valY
-        if df["test"] is not None:
+        if "test" in df.keys():
             d["testY"]  = testY
     else:
         numClasses = config["numClasses"]
         d['trainY'] = np.eye(numClasses)[trainY].astype(np.float32)
-        if df["val"] is not None:
+        if "val" in df.keys():
             d['valY']  = np.eye(numClasses)[valY].astype(np.float32)
-        if df["test"] is not None:
+        if "test" in df.keys():
             d['testY']  = np.eye(numClasses)[testY].astype(np.float32)
     
     return d
