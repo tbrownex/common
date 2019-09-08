@@ -1,6 +1,9 @@
 import pandas as pd
+import numpy as np
 
 def setPandasOptions():
+    np.set_printoptions(suppress=True)
+    
     options = {
         'display': {
             'max_columns': 8,
@@ -15,7 +18,9 @@ def setPandasOptions():
             'chained_assignment': None   # Controls SettingWithCopyWarning
         }
     }
-
+    
+    pd.set_option('display.float_format', lambda x: '%.3f' % x)
+    
     for category, option in options.items():
         for op, value in option.items():
             pd.set_option(op, value)

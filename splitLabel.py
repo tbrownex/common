@@ -3,7 +3,7 @@ import numpy as np
 def splitLabel(df, config):
     ''' Input is a dictionary of dataframes
     Separate the Label from the data and put into distinct data dictionary keys.
-    If the label is categorical then one-hot it
+    See if the Label should be one-hot encoded
     '''
     d = {}
     
@@ -30,12 +30,19 @@ def splitLabel(df, config):
             d["valY"]  = valY
         if "test" in df.keys():
             d["testY"]  = testY
-    else:
+            
+    if config["oneHot"]:
         numClasses = config["numClasses"]
         d['trainY'] = np.eye(numClasses)[trainY].astype(np.float32)
         if "val" in df.keys():
             d['valY']  = np.eye(numClasses)[valY].astype(np.float32)
         if "test" in df.keys():
             d['testY']  = np.eye(numClasses)[testY].astype(np.float32)
+    else:
+        d['trainY'] = trainY
+        if "val" in df.keys():
+            d['valY'] = valY
+        if "test" in df.keys():
+            d['testY'] = testY
     
     return d

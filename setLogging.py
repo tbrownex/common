@@ -1,7 +1,5 @@
 ''' Set the logging level for the process'''
 
-__author__ = "The Hackett Group"
-
 import logging
 
 def setLogging(config):

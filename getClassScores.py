@@ -1,6 +1,5 @@
 import numpy as np
 from sklearn.metrics import accuracy_score, log_loss, roc_auc_score, f1_score
-
 from oneHot import oneHot
 
 def calcAccuracy(actuals, predictions):
@@ -26,13 +25,19 @@ def calcRecall(actuals, predictions):
     TP = preds[posIdx].sum()     # how many True Positives there are
     return TP/posCount
 
-def getClassErrors(actuals, predictions):
+def getClassScores(actuals, predictions):
     '''
     For Classification only
-    Inputs are numpy arrays that are one-hot encoded
+    Inputs should be one-hot encoded, 2D arrays. "predictions" may not be so encode it
     Any number of Classes is ok
     '''
+    if predictions.ndim == 1:
+        predictions = oneHot(predictions)
+    if actuals.ndim == 1:
+        actuals = oneHot(actuals)
+        
     assert (actuals.shape == predictions.shape), "Shape mismatch"
+    
     d = {}
     d["ll"]  = log_loss(actuals, predictions)
     d["auc"] = roc_auc_score(actuals, predictions)
