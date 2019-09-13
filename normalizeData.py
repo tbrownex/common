@@ -30,6 +30,9 @@ def normalize(dataDict, method):
         scaler.fit(dataDict["trainX"])
         arr = scaler.transform(dataDict["trainX"])
         dataDict["trainX"] = pd.DataFrame(arr, columns=cols)
+        if dataDict["valX"] is not None:
+            arr = scaler.transform(dataDict["valX"])
+            dataDict["valX"] = pd.DataFrame(arr, columns=cols)
         if dataDict["testX"] is not None:
             arr = scaler.transform(dataDict["testX"])
             dataDict["testX"] = pd.DataFrame(arr, columns=cols)
