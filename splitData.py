@@ -10,7 +10,10 @@ def splitData(data, config, stratify=None, seed=None):
     svCols = data.columns
     
     if config["testPct"] > 0:
-        train, test = train_test_split(data, test_size=config["testPct"], stratify=data[stratify], random_state =seed)
+        if stratify:
+            train, test = train_test_split(data, test_size=config["testPct"], stratify=data[stratify], random_state =seed)
+        else:
+            train, test = train_test_split(data, test_size=config["testPct"], random_state =seed)
         train.columns = svCols
         test.columns  = svCols
         d["train"] = train
@@ -19,7 +22,10 @@ def splitData(data, config, stratify=None, seed=None):
         d["train"] = data 
         
     if config["valPct"] > 0:
-        train, val = train_test_split(d["train"], test_size=config["valPct"], stratify=d["train"][stratify], random_state =seed)
+        if stratify:
+            train, val = train_test_split(d["train"], test_size=config["valPct"], stratify=d["train"][stratify], random_state =seed)
+        else:
+            train, val = train_test_split(d["train"], test_size=config["valPct"], random_state =seed)
         train.columns = svCols
         val.columns  = svCols
         d["train"] = train

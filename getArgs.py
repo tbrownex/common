@@ -8,6 +8,7 @@
 import argparse
 
 def getArgs():
+    print("getArgs in Common")
     parser = argparse.ArgumentParser()
     parser.add_argument('--save',
                         required=False,
