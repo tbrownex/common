@@ -16,13 +16,14 @@ def plotColumns(a, b, labelA, labelB, title=None):
     high = b.max()*1.1
     y2 = np.linspace(start=low, stop=high, num=length)
     
-    fig, ax1 = plt.subplots()
+    fig, ax1 = plt.subplots(figsize=(17,5))
     ax2 = ax1.twinx()
-    ax1.plot(x, a, 'r-')
-    ax2.plot(x, b, 'b-')
-    ax1.set_xlabel('')
-    ax1.set_ylabel(labelA, color='r')
-    ax2.set_ylabel(labelB, color='b')
+    ax1.plot(x, a, 'r-', label=labelA)
+    ax2.plot(x, b, 'b-', label=labelB)
+    #ax1.set_xlabel('')
+    #ax1.set_ylabel(labelA, fontsize=18, color='r')
+    #ax2.set_ylabel(labelB, fontsize=18, color='b')
+    plt.legend(loc='lower right')
     if title:
         plt.title(title)
     plt.show()

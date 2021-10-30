@@ -8,15 +8,16 @@
 import argparse
 
 def getArgs():
-    print("getArgs in Common")
     parser = argparse.ArgumentParser()
-    parser.add_argument('--save',
+    parser.add_argument("epochs", \
+                        type=int)
+    '''parser.add_argument('--save',
                         required=False,
                         action='store_true',
-                        help="Saves the best model")
-    parser.add_argument("testInd", \
+                        help="Saves the best model")'''
+    '''parser.add_argument("testInd", \
                         choices=['test','full'], \
-                        help="Run against the full data or a test portion")
+                        help="Run against the full data or a test portion")'''
     '''parser.add_argument('--outliers',
                         required=False,
                         action='store_true',

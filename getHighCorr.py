@@ -27,3 +27,17 @@ def getHighCorr(df, threshold):
                 else:
                     d[(col, idx)] = corrDF[col][idx]
     return sorted(d.items(), key=operator.itemgetter(1), reverse=True)
+
+def getLowCorr(df, threshold):
+    corrDF = df.corr().abs()
+    d = {}
+    for col in corrDF.columns:
+        lowCorr = corrDF[col] < threshold
+        for idx, cov in lowCorr.items():
+            if cov and col != idx:
+                exists = checkCombo(d, col, idx)
+                if exists:
+                    pass
+                else:
+                    d[(col, idx)] = corrDF[col][idx]
+    return sorted(d.items(), key=operator.itemgetter(1), reverse=True)
