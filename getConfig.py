@@ -12,11 +12,14 @@ __author__ = "The Hackett Group"
 def getConfig():
 
     d = {}
-    d["dataLoc"]    = "/home/tbrownex/data/test/"
-    d["fileName"]  = "sgemm_product.csv"
-    d["labelColumn"] = "MeanRunTime"
+    d["dataLoc"]    =  '/home/tbrownex/data/'
+    d["fileName"]  = "CreditCardFraud.csv"
+    d["labelColumn"] = "Class"
+    d['labelType'] = "Binary"
+    d["oneHot"] = False
     d["logLoc"]     = "/home/tbrownex/"
-    d["logFile"]    = "Boeing.log"
+    d["logFile"]    = "creditCard.log"
     d["logDefault"] = "info"
-    d["testPct"]   = 0.25
+    d["testPct"]   = 0.20
+    d["valPct"]   = 0.10
     return d
